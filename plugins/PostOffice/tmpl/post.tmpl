@@ -1,0 +1,11 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_IF NAME=SUCCESS>
+Entries added (click to edit):<br /><br />
+<TMPL_LOOP NAME=ENTRIES_LOOP>
+<a href="<TMPL_VAR NAME=LINK>"><TMPL_VAR NAME=TITLE></a>
+</TMPL_LOOP>
+</TMPL_IF>
+
+
+<TMPL_INCLUDE NAME="footer.tmpl">

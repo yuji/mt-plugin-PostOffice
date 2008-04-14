@@ -1,0 +1,60 @@
+name: PostOffice
+id: postoffice
+key: postoffice
+author_link: http://www.sixapart.com/
+author_name: Six Apart, Ltd.
+description: Reads from e-mail and posts to MT.
+version: 1.0
+plugin_link: http://www.sixapart.com/
+
+settings:
+    email_address:
+        Default: ''
+    email_username:
+        Default: ''
+    email_password:
+        Default: ''
+    email_host:
+        Default: ''
+    email_transport:
+        Default: pop3
+    imap_folder:
+        Default: INBOX
+    use_ssl:
+        Default: 0
+    allow_mt_authors:
+        Default: 1
+    require_api_key:
+        Default: 1
+    default_author:
+        Default: 1
+    allowed_emails:
+        Default: email@yourdomain.com
+    post_assets:
+        Default: 0
+    post_status:
+        Default: 2
+
+config_template:
+    code: $postoffice::PostOffice::CMS::config_template
+
+callbacks:
+    MT::App::CMS::template_source.edit_entry: $postoffice::PostOffice::CMS::edit_entry_src
+
+postoffice_transports:
+    imap:
+        label: IMAP
+        class: PostOffice::Transport::IMAP
+    pop3:
+        label: POP3
+        class: PostOffice::Transport::POP3
+
+tasks:
+    PostOfficeDelivery:
+        frequency: 1
+        label: PostOffice Delivery
+        code: >
+            sub {
+                require PostOffice;
+                return PostOffice->deliver;
+            }

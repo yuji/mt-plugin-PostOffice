@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use lib $ENV{MT_HOME} ? "$ENV{MT_HOME}/lib" : 'lib';
+use MT::Bootstrap;
+
+use MT;
+my $mt = MT->new;
+
+print "Movable Type PostOffice Delivery starting...\n";
+
+require PostOffice;
+$PostOffice::DEBUG = 1;
+PostOffice->deliver;
