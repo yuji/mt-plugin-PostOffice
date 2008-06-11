@@ -7,6 +7,14 @@ description: Reads from e-mail and posts to MT.
 version: 1.0
 plugin_link: http://www.sixapart.com/
 
+applications:
+    cms:
+        init: >>
+            sub {
+                my $c = MT->component('postoffice');
+                $c->{config_template} = MT->handler_to_coderef('$postoffice::PostOffice::CMS::config_template');
+            }
+
 settings:
     email_address:
         Default: ''
@@ -34,9 +42,6 @@ settings:
         Default: 0
     post_status:
         Default: 2
-
-config_template:
-    code: $postoffice::PostOffice::CMS::config_template
 
 callbacks:
     MT::App::CMS::template_source.edit_entry: $postoffice::PostOffice::CMS::edit_entry_src
