@@ -1,66 +1,66 @@
-#############################################################
-This is a placeholder README.
-If you are the author, please fill in the __sections__ below.
-If you are not the author, please bug the author.
-#############################################################
-
-## __PLUGINNAME__, a plugin for Movable Type
-## Author: __AUTHORNAME__, __EMAIL/URL__
-## Version: __VERSION__
-## Released under __LICENSE__
+## PostOffice, a plugin for Movable Type
+## Author: Six Apart, http://www.sixapart.com/
+## Version: 1.0
+## Released under GPL2
 ##
-## $Id$
- 
+
 ## OVERVIEW ##
 
-__A short and very basic description of the plugin.__
+This plugin enables users to post to their blog via email.
 
 ## PREREQUISITES ##
 
-__detail MT version compatibility and anything else the plugin requires__
+* Mail::IMAPClient (for IMAP)
+* Mail::POP3Client (for POP)
+* Email::Address
+* Email::MIME
+* IO::Socket::SSL
 
 ## FEATURES ##
 
-__A longer description of the plugin's features for those who are still reading__
+Post Office is a plugin for Movable Type that allows users to post to 
+their blog via email. It works by connecting Movable Type to an 
+existing email account, like GMail or any POP or IMAP compliant mailbox, 
+and periodically scanning for messages to post. Each user can be given 
+a unique email address to which to post to uniquely identify them and 
+the blog they want to post to when sending an email. 
 
 ## INSTALLATION ##
 
-__detail installation instructions__
-
-## CONFIGURATION ##
-
-__detail configuration instructions, if any__
-
-## USAGE ##
-
-__detail further usage instructions, if any__
-
-## KNOWN ISSUES ##
-
-__detail any known issues with current version, if any__
+  1. Copy the contents of PostOffice/plugins into /path/to/mt/plugins/
+  2. Navigate to the settings area for PostOffice and enter in the
+     connection info for your email provider.
+  3. Ensure that you have an API Password selected for yourself. Edit
+     your profile if you need to select one.
+  4. Click the Write Entry button and scroll to the bottom of the screen.
+     Look for the text "Email to <blog name>".
+  5. Save the email address linked to in your address book. Send a test
+     email.
 
 ## SUPPORT ##
 
-__specify where people can go for support__
+For support, please visit our forums:
+
+   http://forums.movabletype.org/
 
 ## SOURCE CODE ##
 
 Source
 
 SVN Repo:
-    http://code.sixapart.com/svn/mtplugins/trunk/__PLUGINNAME__
+    http://code.sixapart.com/svn/mtplugins/trunk/PostOffice
 
 Trac View:
-    http://code.sixapart.com/trac/mtplugins/log/trunk/__PLUGINNAME_
+    http://code.sixapart.com/trac/mtplugins/log/trunk/PostOffice
 
 Plugins:
-    http://plugins.movabletype.org/__PLUGIN__
+    http://plugins.movabletype.org/post-office/
 
 
 ## LICENSE ##
 
-__specify the license the plugin is released under__
+GPL 2.0
 
 ## AUTHOR ##
 
-__insert arbitrary author info, e.g name, email, URL, company, etc__
+Copyright 2008, Six Apart, Ltd. All rights reserved.
