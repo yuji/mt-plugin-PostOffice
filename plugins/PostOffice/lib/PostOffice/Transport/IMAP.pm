@@ -7,11 +7,21 @@ sub init {
     my $obj = shift;
     my (%param) = @_;
 
+    my $socket;
+    if ($param{ssl}) {
+        require IO::Socket::SSL;
+        $socket = IO::Socket::SSL->new(
+            Proto    => 'tcp',
+            PeerAddr => $param{host},
+            PeerPort => 993, # IMAP over SSL standard port
+        );
+    }
+
     require Mail::IMAPClient;
     $obj->{client} = new Mail::IMAPClient(
-        Server   => $param{host},
         User     => $param{username},
         Password => $param{password},
+        ($socket ? ( Socket => $socket ) : ( Server => $param{host} )),
     ) or die "Failed to connect: " . $@;
 
     $obj->{imap_folder} = $param{imap_folder};

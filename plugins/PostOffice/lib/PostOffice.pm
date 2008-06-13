@@ -196,9 +196,9 @@ sub _get_valid_addresses {
     my ( $blog_id, $cfg ) = @_;
 
     # Get Addresses out of plugindata
-    my @addresses = split( ',', lc( $cfg->{allowed_emails} || '' ) );
+    my @addresses = split( /\s*,\s*/, lc( $cfg->{allowed_emails} || '' ) );
     my %addresses;
-    @addresses{@addresses} = 1 if @addresses;
+    $addresses{$_} = 1 for @addresses;
 
     require MT::Permission;
     require MT::Author;
