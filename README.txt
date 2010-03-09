@@ -37,25 +37,10 @@ the blog they want to post to when sending an email.
   5. Save the email address linked to in your address book. Send a test
      email.
 
-## SUPPORT ##
-
-For support, please visit our forums:
-
-   http://forums.movabletype.org/
-
 ## SOURCE CODE ##
 
-Source
-
-SVN Repo:
-    http://code.sixapart.com/svn/mtplugins/trunk/PostOffice
-
-Trac View:
-    http://code.sixapart.com/trac/mtplugins/log/trunk/PostOffice
-
-Plugins:
-    http://plugins.movabletype.org/post-office/
-
+Source repository:
+    http://github.com/sixapart/mt-plugin-PostOffice
 
 ## LICENSE ##
 
