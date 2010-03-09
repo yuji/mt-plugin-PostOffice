@@ -48,4 +48,4 @@ GPL 2.0
 
 ## AUTHOR ##
 
-Copyright 2008, Six Apart, Ltd. All rights reserved.
+Copyright 2008-2010, Six Apart, Ltd. All rights reserved.
