@@ -1,0 +1,9 @@
+*~
+*.swp
+.DS_Store
+*.zip
+*.tar.gz
+MANIFEST
+Makefile
+blib
+pm_to_blib
