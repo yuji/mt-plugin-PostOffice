@@ -8,4 +8,3 @@ WriteMakefile(
     VERSION         => '1.0',
     DISTNAME        => 'PostOffice',
 );
-
