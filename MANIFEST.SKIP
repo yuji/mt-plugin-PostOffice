@@ -1,12 +1,14 @@
 # version control
 \bCVS
 (^|/)\.
+.gitignore
 
 # CPAN chain files
 ^MANIFEST
 ^Makefile
 ^META.yml$
 ^blib/
+^pm_to_blib
 
 # packages
 \.zip$
