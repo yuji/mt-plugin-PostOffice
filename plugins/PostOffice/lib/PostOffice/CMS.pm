@@ -157,14 +157,14 @@ sub config_template {
     label="<__trans phrase="Default post status">"
     show_hint="1"
     hint="<__trans phrase="This determines if posts are automatically published as they are received or if they must be manually published.">">
-    <select name="post_status">
+    <select name="post_status" id="post_status">
         <option<mt:if name="post_status" eq="2"> selected="selected"</mt:if> value="2"><__trans phrase="Published"></option>
         <option<mt:if name="post_status" eq="1"> selected="selected"</mt:if> value="1"><__trans phrase="Draft"></option>
     </select>
 </mtapp:setting>
 
 <mtapp:setting
-    id="description"
+    id="allowed_emails"
     label="<__trans phrase="Email addresses allowed to post (comma separated)">"
     show_hint="1"
     hint="<__trans phrase="Movable Type will post messages received from these email addresses.">">
@@ -192,7 +192,7 @@ sub config_template {
     label="<__trans phrase="Default Author">"
     show_hint="1"
     hint="<__trans phrase="This is the 'default' author, the person to whom entries are assigned if no other valid author exists.">">
-    <select name="default_author">
+    <select name="default_author" id="default_author">
         $author_options
     </select>
 </mtapp:setting>
