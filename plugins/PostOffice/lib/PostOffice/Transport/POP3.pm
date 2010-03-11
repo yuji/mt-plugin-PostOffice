@@ -9,6 +9,7 @@
 # version 2 for more details. You should have received a copy of the GNU
 # General Public License version 2 along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
+
 package PostOffice::Transport::POP3;
 
 use strict;
@@ -26,6 +27,8 @@ sub init {
         ($param{ssl} ? ( USESSL => 'true' ) : () ),
         #DEBUG    => 1,
     ) or die "Failed to connect: " . $@;
+
+    return;
 }
 
 sub remove {
@@ -47,7 +50,7 @@ sub message_iter {
 
     my $counter = 1;
 
-    sub {
+    return sub {
         if ($counter > $count) {
             $client->Close();
             return undef;

@@ -9,6 +9,7 @@
 # version 2 for more details. You should have received a copy of the GNU
 # General Public License version 2 along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
+
 package PostOffice::Transport::IMAP;
 
 use strict;
@@ -33,6 +34,7 @@ sub init {
         User     => $param{username},
         Password => $param{password},
         ($socket ? ( Socket => $socket ) : ( Server => $param{host} )),
+        IgnoreSizeErrors => 1,
     ) or die "Failed to connect: " . $@;
 
     $obj->{imap_folder} = $param{imap_folder};
@@ -51,6 +53,9 @@ sub remove {
     my $client = $obj->{client};
     return undef unless $client;
 
+    print STDERR "[PostOffice] Deleting message id $msg->{sequence}\n"
+      if $PostOffice::DEBUG;
+
     $client->delete_message($msg->{sequence});
 
     return 1;
@@ -62,16 +67,27 @@ sub message_iter {
     my $client = $obj->{client};
     return undef unless $client;
 
-    $client->select($obj->{imap_folder} || "INBOX");
+    my $box = $obj->{imap_folder} || 'INBOX';
+
+    print STDERR "[PostOffice] Selecting mailbox $box\n"
+      if $PostOffice::DEBUG;
+
+    $client->select($box);
 
     # my $count = $client->message_count();
     # return undef unless $count;
 
     my $msgs = $client->messages;
-    return undef unless $msgs && @$msgs;
+    unless ($msgs && @$msgs) {
+        print STDERR "[PostOffice] No messages found. Returning...\n"
+          if $PostOffice::DEBUG;
+        return undef;
+    }
 
     return sub {
         if (!@$msgs) {
+            print STDERR "[PostOffice] Closing server connection.\n"
+              if $PostOffice::DEBUG;
             $client->close();
             return undef;
         }
@@ -92,6 +108,9 @@ sub message_iter {
         }
         $msg->{body} = $client->body_string($msg_seq);
         $msg->{message} = $client->message_string($msg_seq);
+        if (!defined $msg->{message}) {
+            print STDERR "[PostOffice] Bad message_string from IMAPClient: " . $client->LastError . "\n";
+        }
         $msg->{sequence} = $msg_seq;
 
         $msg;

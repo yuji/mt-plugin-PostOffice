@@ -2,10 +2,10 @@ name: PostOffice
 id: postoffice
 key: postoffice
 author_link: http://www.sixapart.com/
-author_name: Six Apart, Ltd.
+author_name: Six Apart Ltd.
 description: Reads from e-mail and posts to MT.
-version: 1.0
-plugin_link: http://www.sixapart.com/
+version: 1.1
+plugin_link: http://plugins.movabletype.org/post-office/
 
 applications:
     cms:

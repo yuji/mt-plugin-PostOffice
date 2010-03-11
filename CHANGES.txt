@@ -1,0 +1,15 @@
+Changelog for Post Office
+==========================
+
+Version 1.1
+-----------
+
+* Added support for #hashtag parsing for subject line (applies tags to entry).
+* Assigns any author's text format as the text format for the entry; falls back to blog's default text format.
+* Specifying IgnoreSizeError option with IMAPClient; seems Gmail reported size doesn't necessarily match content length?
+
+
+Version 1.0
+-----------
+
+* Initial release.

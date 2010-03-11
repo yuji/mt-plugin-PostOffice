@@ -9,6 +9,7 @@
 # version 2 for more details. You should have received a copy of the GNU
 # General Public License version 2 along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
+
 package PostOffice::CMS;
 
 use strict;
@@ -167,7 +168,7 @@ sub config_template {
     label="<__trans phrase="Email addresses allowed to post (comma separated)">"
     show_hint="1"
     hint="<__trans phrase="Movable Type will post messages received from these email addresses.">">
-    <textarea name="allowed_emails" id="allowed_emails" cols="50" rows="2"><mt:var name="allowed_emails" escape="html"></textarea>
+    <textarea name="allowed_emails" id="allowed_emails" cols="" rows="2"><mt:var name="allowed_emails" escape="html"></textarea>
 </mtapp:setting>
 
 <mtapp:setting
@@ -180,9 +181,9 @@ sub config_template {
 
 <mtapp:setting
     id="require_api_key"
-    label="<__trans phrase="Require API key in address (i.e., user+mtapikey@...)">"
+    label="<__trans phrase="Require Web Services Password in address (i.e., user+nnnnn@...)">"
     show_hint="1"
-    hint="<__trans phrase="If you check this box, PostOffice will require users to include their API key as an extension on their e-mail address. So the 'From' address should contain a '+' followed by their API key value. This provides additional authentication for incoming messages.">">
+    hint="<__trans phrase="If you check this box, PostOffice will require users to include their Web Serivce Password as an extension on their e-mail address. So the 'From' address should contain a '+' followed by their Web Services Password value. This provides additional authentication for incoming messages.">">
     <input type="checkbox" name="require_api_key" <mt:if name="require_api_key">checked="checked"</mt:if> id="require_api_key"  class="cb" />
 </mtapp:setting>
 
